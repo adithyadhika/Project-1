@@ -1,16 +1,72 @@
-# React + Vite
+# Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Frontend Flutter — target utama **Android**, **Web opsional**.
 
-Currently, two official plugins are available:
+## Prasyarat
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Flutter SDK belum terpasang di mesin ini. Install dulu:
 
-## React Compiler
+```bash
+brew install --cask flutter
+flutter doctor
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Yang sudah ada di mesin ini:
 
-## Expanding the Oxlint configuration
+- Homebrew ✅
+- Android SDK (`~/Library/Android/sdk`) ✅
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Android Studio juga perlu untuk emulator, atau pakai HP fisik dengan USB debugging.
+
+## Setup pertama kali
+
+Folder `android/` dan file pendukung lain dibuat oleh `flutter create`.
+Jalankan sekali di root project:
+
+```bash
+flutter create . --platforms=android,web --org com.example --project-name project
+flutter pub get
+```
+
+> `flutter create .` tidak menimpa file yang sudah ada, jadi `lib/`, `web/`,
+> `pubspec.yaml`, dan konfigurasi di repo ini tetap aman.
+>
+> Kalau nanti butuh iOS, tinggal jalankan
+> `flutter create . --platforms=ios`.
+
+## Menjalankan
+
+```bash
+flutter devices           # lihat device/emulator yang tersedia
+flutter run               # Android (HP/emulator)
+flutter run -d chrome     # Web (opsional)
+```
+
+## Perintah lain
+
+```bash
+flutter analyze           # lint & static analysis
+flutter test              # widget test
+flutter build apk         # build Android (release)
+flutter build web         # build web ke build/web
+```
+
+## Struktur
+
+```
+lib/
+├── main.dart                 # entry point
+├── app.dart                  # MaterialApp + routing
+└── src/
+    ├── theme.dart            # tema Material 3 (dark)
+    ├── home_page.dart        # halaman utama (responsive)
+    └── widgets/
+        └── feature_card.dart
+test/
+└── widget_test.dart
+web/
+├── index.html
+└── manifest.json
+```
+
+Mulai mengembangkan UI dari `lib/src/home_page.dart`.
