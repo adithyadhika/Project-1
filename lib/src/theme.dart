@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Tema aplikasi (Material 3, dark).
 abstract final class AppTheme {

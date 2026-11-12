@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-import 'theme.dart';
+import '../theme.dart';
 
 /// Kartu kecil berisi judul + deskripsi singkat.
 class FeatureCard extends StatelessWidget {
